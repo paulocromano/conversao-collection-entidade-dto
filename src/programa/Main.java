@@ -1,9 +1,10 @@
 package programa;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-import util.ConvertToDTOCollection;
+import util.ConverterToDTOCollection;
 
 public class Main {
 
@@ -11,7 +12,12 @@ public class Main {
 		
 		List<Usuario> usuarios = carregarDados();
 		
-		ConvertToDTOCollection.convertToList(usuarios, UsuarioDTO::new)
+		ConverterToDTOCollection.convertToList(usuarios, UsuarioDTO::new)
+			.forEach(usuario -> System.out.println(usuario.getNome()));
+		
+		System.out.println("\n\t Usuários ordenados");
+		ConverterToDTOCollection.convertToOrdenedList(usuarios, UsuarioDTO::new,
+			Comparator.comparing(Usuario::getNome))
 			.forEach(usuario -> System.out.println(usuario.getNome()));
 	}
 	
@@ -26,5 +32,4 @@ public class Main {
 		
 		return usuarios;
 	}
-	
 }
