@@ -3,9 +3,9 @@ package util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -49,7 +49,7 @@ public final class ConverterToDTOCollection {
 			Function<E, R> function) {
 		
 		return (Set<R>) convertToCollection(collection, 
-				function, TreeSet::new);
+				function, HashSet::new);
 	}
 	
 	/**
